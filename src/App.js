@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import axios from 'axios'
+import Post from "./Post"
+import CreatePost from "./CreatePost"
+import UpdatePost from "./UpdatePost"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [blogPosts, updateBlogPosts] = useState([])
+  const [fetchBlogPosts, updateFetchBlogPosts] = useState(false)
 
-export default App;
+
+  useEffect(() => {
+    const apiCall = async () => {
+      const posts = await axios.get("https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201?view=Grid%20view",
+        {
+
+          headers: {
+            'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`
+          }
+        })
+
+      console.log(posts);
+      updateBlogPosts(posts.data.records);
+    }
+    apiCall()
+  }, [fetchBlogPosts])
+
+    return (
+     
+        <main>
+        <h1>Dating Advice Uncensored: <br />Ladies </h1>
+          {blogPosts.map(post => <Post post={post} key={post.id} fetchBlogPosts={fetchBlogPosts} updateFetchBlogPosts={updateFetchBlogPosts} />
+        )}
+        
+        <CreatePost updateFetchBlogPosts={updateFetchBlogPosts}
+            fetchBlogPosts={fetchBlogPosts}/> 
+        </main>
+      
+    );
+  }
+
+
+  export default App;
