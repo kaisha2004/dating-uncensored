@@ -5,6 +5,7 @@ function UpdatePost(props) {
   const [Author, updateAuthor] = useState(props.post.fields.Author)
   const [Title, updateTitle] = useState(props.post.fields.Title)
   const [Text, updateText] = useState(props.post.fields.Text)
+  const [Img, updateImg] = useState(props.post.fields.Img)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -13,7 +14,8 @@ function UpdatePost(props) {
         fields: {
           Title: Title,
           Author: Author,
-          Text: Text
+          Text: Text,
+          Img: Img
         }
       }, {
       headers: {
@@ -24,11 +26,14 @@ function UpdatePost(props) {
     })
     props.updateFetchBlogPosts(!props.fetchBlogPosts)
     updateAuthor('')
-    updateText("")
+    updateText('')
     updateTitle('')
+    updateImg('')
   }
   return <form onSubmit={handleSubmit}>
-      <h2>Edit Blog Post</h2>
+    <h2>Edit Blog Post</h2>
+      <label htmlFor="Img" >Image</label>
+      <input type='text' id='Img' placeholder="URL" onChange={e => updateImg(e.target.value)} value={Img}/>
       <label htmlFor="Author" >Author</label>
       <input type='text' id='Author'onChange={e => updateAuthor(e.target.value)} value={Author}/>
       <label htmlFor="Title" >Title</label>
