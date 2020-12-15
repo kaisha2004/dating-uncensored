@@ -5,7 +5,7 @@ import axios from 'axios'
 function Post(props) {
   const post = props.post
   const deletePost = async () => {
-    const data = await axios.delete(`https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201${post.id}`,{
+   await axios.delete(`https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201${post.id}`,{
       headers: {
         'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`,
         'Content-Type': 'application/json'

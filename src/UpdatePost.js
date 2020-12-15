@@ -9,7 +9,7 @@ function UpdatePost(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const data = await axios.put(`https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201/${props.post.id}`,
+    await axios.put(`https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201/${props.post.id}`,
       {
         fields: {
           Title: Title,

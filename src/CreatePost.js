@@ -9,7 +9,7 @@ function CreatePost(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const data = await axios.post("https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201",
+   await axios.post("https://api.airtable.com/v0/appUAePiSxyLOS8Rm/Table%201",
       {
         fields: {
           Title: Title,
