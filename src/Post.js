@@ -1,5 +1,5 @@
 import React from 'react'
-// import UpdatePost from "./UpdatePost"
+import UpdatePost from "./UpdatePost"
 import axios from 'axios'
 
 function Post(props) {

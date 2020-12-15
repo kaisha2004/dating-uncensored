@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios'
 import Post from "./Post"
 import CreatePost from "./CreatePost"
-import UpdatePost from "./UpdatePost"
+
 
 function App() {
   const [blogPosts, updateBlogPosts] = useState([])
