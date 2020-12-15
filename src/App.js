@@ -30,7 +30,7 @@ function App() {
       
      
         <main>
-        <h1>Dating Advice Uncensored: <br />Ladies </h1>
+        <h1>Dating Advice Uncensored: Moses <br />Ladies </h1>
           {blogPosts.map(post => <Post post={post} key={post.id} fetchBlogPosts={fetchBlogPosts} updateFetchBlogPosts={updateFetchBlogPosts} />
         )}
         
