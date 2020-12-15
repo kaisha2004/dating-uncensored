@@ -16,11 +16,10 @@ function App() {
         {
 
           headers: {
-            'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`
+            Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_KEY}`
           }
         })
 
-      console.log(posts);
       updateBlogPosts(posts.data.records);
     }
     apiCall()
